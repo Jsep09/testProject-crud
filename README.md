@@ -65,6 +65,7 @@ You can manually initialize the database by following these steps:
 
    ```bash
    docker exec -it mysql-container mysql -u root -p
+   password : 12345
    ```
 
 2. After logging into MySQL, run the following SQL commands to create the tables and insert sample data:
