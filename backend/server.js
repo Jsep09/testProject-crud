@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const con = require("./db/database");
 const dotenv = require("dotenv");
 const router = require("./router/routes");
@@ -12,6 +13,7 @@ dotenv.config({ path: "./config.env" });
 con.connect();
 
 // middleware
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
