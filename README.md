@@ -22,7 +22,7 @@ To set up and run this project locally, follow these steps:
 Clone the project to your local machine:
 
 ```bash
-git clone https://github.com/your-username/testProject-crud.git
+git clone https://github.com/Jsep09/testProject-crud.git
 cd testProject-crud
 ```
 
