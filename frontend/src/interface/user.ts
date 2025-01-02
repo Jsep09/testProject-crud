@@ -9,7 +9,7 @@ export interface Users {
   lastname: string;
   nickname: string;
   birthdate: string;
-  age: number;
+  age: string;
   gender: string;
   create_at: string;
   update_at: string;

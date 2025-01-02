@@ -12,10 +12,7 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
         <div>
           <h2 className="text-xl font-semibold text-gray-900">Users</h2>
-          <p className="text-sm text-gray-500">
-            A list of all the users in your account including their name, title,
-            email and role.
-          </p>
+          <p className="text-sm text-gray-500">A list of all the users</p>
         </div>
         <Link to="/add">
           <button className="w-full sm:w-auto px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
@@ -68,7 +65,7 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className="text-sm text-gray-500">
-                    {user.birthdate}
+                    {user.birthdate.split("T")[0]}
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -78,7 +75,7 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
                   <span className="text-sm text-gray-500">{user.gender}</span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                  <Link to="/edit">
+                  <Link to={`/edit/${user.id}`}>
                     <button className="text-indigo-600 hover:text-indigo-900">
                       Edit
                     </button>
@@ -101,7 +98,7 @@ const UserTable: React.FC<UserTableProps> = ({ users }) => {
                 </p>
                 <p className="text-sm text-gray-500">{user.lastname}</p>
               </div>
-              <Link to="/edit">
+              <Link to={`/edit/:${user.id}`}>
                 <button className="text-indigo-600 hover:text-indigo-900">
                   Edit
                 </button>

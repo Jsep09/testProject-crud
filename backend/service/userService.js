@@ -42,7 +42,7 @@ exports.getUserByID = async (req, res, next) => {
     let { id } = req.params;
     const sql = "SELECT * FROM users WHERE id = ?";
     const [result] = await con.promise().query(sql, [id]);
-    res.status(200).json({ status: 200, message: "Success", data: result });
+    res.status(200).json({ status: 200, data: result });
   } catch (error) {
     console.log(error);
     res.status(500).json({ status: 500, message: "Failed" });

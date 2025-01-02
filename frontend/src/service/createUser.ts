@@ -1,5 +1,4 @@
-import axios, { AxiosResponse } from "axios";
-// import { ApiResponse, Users } from "../interface/user";
+import axios from "axios";
 
 const createUsers = async (data: object) => {
   try {
