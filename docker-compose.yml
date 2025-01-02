@@ -1,0 +1,63 @@
+services:
+  backend:
+    image: backend-image
+    build:
+      context: ./backend
+    ports:
+      - "8080:8080"
+    container_name: backend-container
+    networks:
+      - app-network
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=12345
+      - MYSQL_DATABASE=crud
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  frontend:
+    image: frontend-image
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    container_name: frontend-container
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345 # เปลี่ยนเป็น 12345
+      MYSQL_DATABASE: crud
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p12345",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  app-network:
+    driver: bridge
